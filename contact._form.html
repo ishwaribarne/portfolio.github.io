@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            background-color: black;
+        }
+        .form_container{
+            border: 3px solid black;
+            margin: 100px;
+            margin-left: 500px;
+            padding: 10px;
+            display:  flex;
+            width: 30rem;
+            height: 30rem;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            /* flex-direction: column; */
+        }
+        form{
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          padding: 2vw 4vw;
+          width: 90%;
+          max-width: 600px;
+          border-radius: 10px;  
+        }
+
+        form input , form textarea{
+            border: 1px solid black;
+            /* color: black; */
+            background-color: #f5f5f5;
+            margin: 10px;
+            padding: 5px;
+            font-size: 20px;
+          
+
+        }
+
+        form h3{
+            font-size: 30px;
+            background-color: white;
+            margin: 10px;
+            padding: 5px;
+            text-decoration: underline;
+        }
+
+        .btn{
+   /* margin-left: 200px; */
+   height: 50px;
+   background-color: #792276;
+   /* #9d55e1; */
+   margin-top: 15px;
+   font-size: 25px;
+   border-radius: 25px;
+   border-color: #792276;
+   padding: 8px;
+   width: 23%;
+   color: white;
+   font-family: 'Rubik', sans-serif;
+   /* box-shadow: 3px 3px 3px #895fb1; */
+}
+.btn:hover{
+   transform:scaleY(1.1);
+   /* transform:scaleX(1.2); */
+
+}
+
+.form_btn{
+    width: 100%;
+}
+
+input:focus~label,
+input:valid~label{
+    top :-35px;
+    
+}
+
+
+
+        
+    </style>
+</head>
+<body>
+    <div class = "form_container">
+    <form onsubmit ="sendEmail(); reset(); return false;"> 
+
+        <h3> Contact Me </h3>
+        <input type="text" id ="name" placeholder="Your Name" required>
+        <input type="email" id ="email" placeholder="Email id" required>
+        <input type="text" id ="phone" placeholder="Phone no " required>
+        <textarea id ="message" rows="4" placeholder="Type your message "></textarea>
+        <button type = "submit" class ="btn form_btn" >Send message </button>
+
+    </form>
+</div>
+
+<script src =" https://smtpjs.com/v3/smtp.js"></script>
+
+<script> 
+      function sendEmail(){
+         Email.send({
+         Host : "smtp.gmail.com",
+         Username : "ishwaribarne07@gmail.com",
+         Password : "9309068346",
+         To : 'ishwaribarne07@gmail.com',
+         From : document.getElementById("email").value,
+         Subject : "New contact form Enquiry",
+         Body : "Name " + document.getElementById("name").value + 
+         " <br>Email " + document.getElementById("email").value + 
+         "<br>Phone No  " + document.getElementById("phone").value + 
+         "<br> Messege " + document.getElementById("message").value + "<br>"
+}).then(
+  message => alert("Messege sent susessfully")
+);
+      }
+
+</script>
+</body>
+
+
+</html>
